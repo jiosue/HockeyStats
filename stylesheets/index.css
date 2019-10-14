@@ -1,0 +1,28 @@
+.center {
+	margin: auto;
+}
+#note {
+	font-size: 1.3em;
+}
+.bold {
+	font-weight: bold;
+}
+#footer {
+	background-color: teal;
+	opacity: 0.8;
+}
+.text {
+	font-size: 1.3em;
+	color: white;
+}
+.hyperlink {
+	font-weight: bold;
+}
+
+.button {
+	background-color: gray;
+	font-color: white;
+	font-size: 1.3em;
+	width: 15%;
+	height: 3em;
+}

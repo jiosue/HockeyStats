@@ -11,7 +11,7 @@ const STATS_LENGTH = STATS_ORDER.length;
 var STATS = {};
 for (var i = 0; i < STATS_LENGTH; i++) {STATS[STATS_ORDER[i]] = 0;}
 var start_time = 0;
-var on_ice = false;
+var on_ice = false; var paused = false;
 
 
 // Functions
@@ -42,7 +42,7 @@ function submit_note() {
 
 
 function increment_stat(stat_name) {
-	if (on_ice) {
+	if (on_ice && !paused) {
 		STATS[stat_name] += 1;
 		update_output();
 	}
@@ -51,20 +51,34 @@ function increment_stat(stat_name) {
 function start_shift() {
 	if (!on_ice) {
 		start_time = get_time();
-		on_ice = true;
+		on_ice = true; paused = false;
 		document.getElementById("ice").innerHTML = 'on ice';
 	}
 }
 
 
-function stop_shift() {
-	if (on_ice) {
-		STATS['TOI'] += get_time() - start_time;
+function stop_shift(do_when_paused=false) {
+	if (on_ice && (do_when_paused || !paused)) {
+		if (!paused) {STATS['TOI'] += get_time() - start_time;}
+		paused = false;
 		increment_stat("Shifts");
 		STATS['TOI/shift'] = Math.round(STATS['TOI'] / STATS['Shifts']);
 		update_output();
 		on_ice = false;
 		document.getElementById("ice").innerHTML = 'off ice';
+	}
+}
+
+
+function pause_resume() {
+	if (on_ice && !paused) {
+		document.getElementById("ice").innerHTML = 'paused';
+		paused = true;
+		STATS['TOI'] += get_time() - start_time;
+	} else if (on_ice && paused) {
+		document.getElementById("ice").innerHTML = 'on ice';
+		paused = false;
+		start_time = get_time();
 	}
 }
 
@@ -79,7 +93,7 @@ document.onkeydown = function (e) {
 		case 83 : // Start shift, s
 			start_shift(); break;
 		case 69 : // Stop shift, e
-			stop_shift(); break;
+			stop_shift(true); break;
 		case 87 : // Faceoff win, w
 			if (!on_ice) {start_shift(); increment_stat('Faceoff Wins');} break;
 		case 76 : // Faceoff loss, l
@@ -88,9 +102,9 @@ document.onkeydown = function (e) {
 			increment_stat('Goals'); increment_stat('Plus'); stop_shift(); break;
 		case 65 : // Assist, a
 			increment_stat('Assists'); increment_stat('Plus'); stop_shift(); break;
-		case 80 : // Plus, p
+		case 38 : // Plus, <up>
 			increment_stat('Plus'); stop_shift(); break;
-		case 77 : // Minus, m
+		case 40 : // Minus, <down>
 			increment_stat('Minus'); stop_shift(); break;
 		case 88 : // Shot, x
 			increment_stat('Shots'); break;
@@ -100,5 +114,7 @@ document.onkeydown = function (e) {
 			increment_stat('Off-target Shots'); break;
 		case 72 : // Hit, h
 			increment_stat('Hits'); break;
+		case 80 : // Pause/resume, p
+			pause_resume(); break;
 	}
 }

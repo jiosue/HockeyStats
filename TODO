@@ -1,1 +1,3 @@
 - Add pauses (so shift doesn't increment when you stay on the ice through stoppage of play)
+- <Up> for plus, <down> for minus
+- <p> for pause

@@ -39,12 +39,15 @@
                             </p></span></span>
 
                             <!-- Shifts -->
-                            <div align="center">
+                            <div class="button_layout">
                                 <input type="button" value="Start Shift" 
                                     onclick="start_shift();" 
                                     class="button">
                                 <input type="button" value="Stop Shift" 
-                                    onclick="stop_shift();" 
+                                    onclick="stop_shift(true);" 
+                                    class="button">
+                                <input type="button" value="Pause/Resume"
+                                    onclick="pause_resume();"
                                     class="button">
                                 <input type="button" value="Faceoff Win" 
                                     onclick="if (!on_ice) {start_shift(); increment_stat('Faceoff Wins');}"
@@ -55,7 +58,7 @@
                             </div>
 
                             <!-- Points -->
-                            <div align="center">
+                            <div class="button_layout">
                                 <input type="button" value="Goal" 
                                     onclick="increment_stat('Goals'); increment_stat('Plus'); stop_shift();" 
                                     class="button">
@@ -71,7 +74,7 @@
                             </div>
 
                             <!-- Misc -->
-                            <div align="center">
+                            <div class="button_layout">
                                 <input type="button" value="Shot" 
                                     onclick="increment_stat('Shots');" 
                                     class="button">
@@ -145,12 +148,13 @@
                             <li class="white-text">`ENTER` submits a note</li>
                             <li class="white-text">`s` starts a shift</li>
                             <li class="white-text">`e` ends a shift</li>
+                            <li class="white-text">`p` pauses and resumes a shift</li>
                             <li class="white-text">`w` is a faceoff win, starts a shift</li>
                             <li class="white-text">`l` is a faceoff win, starts a shift</li>
                             <li class="white-text">`g` is a goal, plus, ends a shift</li>
                             <li class="white-text">`a` is an assist, plus, ends a shift</li>
-                            <li class="white-text">`p` is a plus, ends a shift</li>
-                            <li class="white-text">`m` is a minus, ends a shift</li>
+                            <li class="white-text">`UP` is a plus, ends a shift</li>
+                            <li class="white-text">`DOWN` is a minus, ends a shift</li>
                             <li class="white-text">`x` is a shot</li>
                             <li class="white-text">`b` is a blocked shot</li>
                             <li class="white-text">`o` is an off-target shot</li>

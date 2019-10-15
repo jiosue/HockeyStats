@@ -55,16 +55,16 @@
                             <!-- Points -->
                             <div align="center">
                                 <input type="button" value="Goal" 
-                                    onclick="stop_shift(); increment_stat('Goals'); increment_stat('Plus');" 
+                                    onclick="increment_stat('Goals'); increment_stat('Plus'); stop_shift();" 
                                     class="button">
                                 <input type="button" value="Assist" 
-                                    onclick="stop_shift(); increment_stat('Assists'); increment_stat('Plus');" 
+                                    onclick="increment_stat('Assists'); increment_stat('Plus'); stop_shift();" 
                                     class="button">
                                 <input type="button" value="Plus" 
-                                    onclick="stop_shift(); increment_stat('Plus');" 
+                                    onclick="increment_stat('Plus'); stop_shift();" 
                                     class="button">
                                 <input type="button" value="Minus" 
-                                    onclick="stop_shift(); increment_stat('Minus');" 
+                                    onclick="increment_stat('Minus'); stop_shift();" 
                                     class="button">
                             </div>
 

@@ -87,9 +87,21 @@ function pause_resume() {
 
 document.onkeydown = function (e) {
 	e = e || window.event;
+
+	// Enter should be binded regardless of if the user is typing a note
+
+	if ((e.which || e.keyCode) == 13) {
+		submit_note(); return;
+	}
+
+	// Key bindings shouldn't do anything if the person is typing a note
+	if( e.target.nodeName == "INPUT" || e.target.nodeName == "TEXTAREA" ) return;
+	if( e.target.isContentEditable ) return;
+
+	// key bindings
 	switch (e.which || e.keyCode) {
-		case 13 : // Submit note, Enter
-			submit_note(); break;
+		// case 13 : // Submit note, Enter
+		// 	submit_note(); break;
 		case 83 : // Start shift, s
 			start_shift(); break;
 		case 69 : // Stop shift, e
@@ -102,9 +114,9 @@ document.onkeydown = function (e) {
 			increment_stat('Goals'); increment_stat('Plus'); stop_shift(); break;
 		case 65 : // Assist, a
 			increment_stat('Assists'); increment_stat('Plus'); stop_shift(); break;
-		case 38 : // Plus, <up>
+		case 39 : // Plus, <right>
 			increment_stat('Plus'); stop_shift(); break;
-		case 40 : // Minus, <down>
+		case 37 : // Minus, <left>
 			increment_stat('Minus'); stop_shift(); break;
 		case 88 : // Shot, x
 			increment_stat('Shots'); break;

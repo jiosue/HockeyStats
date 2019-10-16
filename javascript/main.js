@@ -121,6 +121,27 @@ function pause_resume() {
 }
 
 
+function copy_output() {
+	/* Copy the stats output to the clipboard */
+
+	// from https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
+
+	if (document.selection) { 
+	    var range = document.body.createTextRange();
+	    range.moveToElementText(document.getElementById("output"));
+	    range.select().createTextRange();
+	    document.execCommand("copy"); 
+	} else if (window.getSelection) {
+	    var range = document.createRange();
+	     range.selectNode(document.getElementById("output"));
+	     window.getSelection().addRange(range);
+	     document.execCommand("copy");
+	}
+
+	alert("Output copied!");
+}
+
+
 // Key bindings
 
 document.onkeydown = function (e) {

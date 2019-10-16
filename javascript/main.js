@@ -46,13 +46,15 @@ function update_output() {
 		var stat = STATS_ORDER[i];
 		output += stat + ": " + STATS[stat].toString() + "<br/>";
 	}
-	output += "<br/><span class='bold'>Notes</span>:<br/>" + NOTES;
+	output += "<br/>Notes:<br/>" + NOTES;
 
 	// Reset TOI and TOI/shift to seconds.
 	STATS["TOI"] = toi; STATS["TOI/shift"] = toi_shift;
 
 	// Put output on the screen.
 	document.getElementById("output").innerHTML = output;
+
+	return output;
 }
 
 
@@ -124,19 +126,17 @@ function pause_resume() {
 function copy_output() {
 	/* Copy the stats output to the clipboard */
 
-	// from https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
+	// from https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
 
-	if (document.selection) { 
-	    var range = document.body.createTextRange();
-	    range.moveToElementText(document.getElementById("output"));
-	    range.select().createTextRange();
-	    document.execCommand("copy"); 
-	} else if (window.getSelection) {
-	    var range = document.createRange();
-	     range.selectNode(document.getElementById("output"));
-	     window.getSelection().addRange(range);
-	     document.execCommand("copy");
-	}
+	const el = document.createElement('textarea');
+	el.value = update_output().replace(/<br\s*\/?>/mg,"\n")
+	el.setAttribute('readonly', '');
+	el.style.position = 'absolute';
+	el.style.left = '-9999px';
+	document.body.appendChild(el);
+	el.select();
+	document.execCommand('copy');
+	document.body.removeChild(el);
 
 	alert("Output copied!");
 }

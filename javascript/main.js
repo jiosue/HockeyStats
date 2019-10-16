@@ -158,10 +158,10 @@ function copy_output() {
 function refresh() {
 	/* Clear cookies and reload. */
 
-	set_cookie("NOTES", "", 1);
+	set_cookie("NOTES", "", 10);
 	for (var i = 0; i < STATS_LENGTH; i++) {
 		var stat = STATS_ORDER[i];
-		set_cookie("stat", 0, 1);
+		set_cookie(stat, 0, 10);
 	}
 	location.reload();
 }

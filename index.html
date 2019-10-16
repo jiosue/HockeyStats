@@ -16,10 +16,21 @@
 
     <body>
 
+        <!-- Show current status, on ice, off ice, or paused -->
+        <span id="status">off ice</span>
+
+        <!-- main container -->
         <div class="container">
 
             <!-- Inputs -->
             <div class="row">
+
+                <!-- Title -->
+                <div class="col s12">
+                    <div class="card-panel teal">
+                        <h1 class='center'><span class='bold'>Hockey Stats App</span></h1>
+                    </div>
+                </div>
 
                 <!-- Header -->
                 <div class="col s12">
@@ -35,16 +46,13 @@
                         <div class="card-content white-text">
                             <i style="float: right;" class="material-icons">description</i>
                             <span class="card-title"><span class='bold'><p class="center">
-                                Enter Stats Here (currently <span id="ice">off ice</span>)
+                                Enter Stats Here <!-- (currently <span id="ice">off ice</span>) -->
                             </p></span></span>
 
                             <!-- Shifts -->
                             <div class="button_layout">
-                                <input type="button" value="Start Shift" 
-                                    onclick="start_shift();" 
-                                    class="button">
-                                <input type="button" value="Stop Shift" 
-                                    onclick="stop_shift(true);" 
+                                <input type="button" value="Start/Stop Shift" 
+                                    onclick="if (on_ice) {stop_shift(true);} else {start_shift();}" 
                                     class="button">
                                 <input type="button" value="Pause/Resume"
                                     onclick="pause_resume();"
@@ -98,7 +106,7 @@
                 <div class="col s12">
                     <div  class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <i style="float: right;" class="material-icons">description</i>
+                            <i style="float: right;" class="material-icons">view_headline</i>
                             <span class="card-title"><span class='bold'><p class="center">Enter Notes Here</p></span></span>
                             <input type="text" value="Enter a note here" id="note">
                             <input type="button" value="Submit" onclick="submit_note()" class="button">
@@ -122,7 +130,7 @@
                 <div class="col s12">
                     <div  class="card blue-grey darken-1">
                         <div class="card-content white-text">
-                            <i style="float: right;" class="material-icons">description</i>
+                            <i style="float: right;" class="material-icons">code</i>
                             <p class="text" id="output">
                                 <!-- Output is put inside here with the javascript script -->
                                 The compiled game stats will appear here as they are entered.
@@ -141,14 +149,12 @@
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Hockey Stats App v0.0.1, October 2019.</h5>
+                    <h5 class="white-text">Description of key bindings</h5>
                     <p class="text">
-                        <em>Description of key bindings</em><br/>
                         <table>
                             <li class="white-text">`ENTER` submits a note</li>
-                            <li class="white-text">`s` starts a shift</li>
-                            <li class="white-text">`e` ends a shift</li>
-                            <li class="white-text">`p` pauses and resumes a shift</li>
+                            <li class="white-text">`s` starts/stops a shift</li>
+                            <li class="white-text">`p` pauses/resumes a shift</li>
                             <li class="white-text">`w` is a faceoff win, starts a shift</li>
                             <li class="white-text">`l` is a faceoff win, starts a shift</li>
                             <li class="white-text">`g` is a goal, plus, ends a shift</li>
@@ -162,6 +168,11 @@
                         </table>
                     </p>
                 </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <p style="margin-bottom: 0;" class="grey-text text-lighten-4">Hockey Stats App v0.1.0, October 2019.</p>
             </div>
         </div>
     </footer>

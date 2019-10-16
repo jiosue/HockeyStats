@@ -23,10 +23,24 @@
 	background-color: gray;
 	font-color: white;
 	font-size: 1.3em;
-	width: 19%;
+	width: 24%;
 	height: 5em;
 }
 .button_layout {
 	padding-top: .25%;
 	padding-bottom: .25%;
+}
+#status {
+    position: fixed;
+    bottom: .5%;
+    right: .5%;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    padding: 1.5em;
+    border-radius: 10px;
+    font-size: 2em;
 }

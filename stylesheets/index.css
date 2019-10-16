@@ -25,6 +25,7 @@
 	font-size: 1.3em;
 	width: 24%;
 	height: 5em;
+	border-radius: 8px;
 }
 .button_layout {
 	padding-top: .25%;
@@ -40,7 +41,7 @@
     background-color: teal;
     color: white;
     cursor: pointer;
-    padding: 1.5em;
+    padding: 20px;
     border-radius: 10px;
-    font-size: 2em;
+    font-size: 1.5em;
 }

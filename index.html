@@ -17,7 +17,7 @@
     <body>
 
         <!-- Show current status, on ice, off ice, or paused -->
-        <span id="status">off ice</span>
+        <span class="bold"><span id="status">off ice</span></span>
 
         <!-- main container -->
         <div class="container">
@@ -50,7 +50,7 @@
                             </p></span></span>
 
                             <!-- Shifts -->
-                            <div class="button_layout">
+                            <div align="center" class="button_layout">
                                 <input type="button" value="Start/Stop Shift" 
                                     onclick="if (on_ice) {stop_shift(true);} else {start_shift();}" 
                                     class="button">
@@ -66,7 +66,7 @@
                             </div>
 
                             <!-- Points -->
-                            <div class="button_layout">
+                            <div align="center" class="button_layout">
                                 <input type="button" value="Goal" 
                                     onclick="increment_stat('Goals'); increment_stat('Plus'); stop_shift();" 
                                     class="button">
@@ -82,7 +82,7 @@
                             </div>
 
                             <!-- Misc -->
-                            <div class="button_layout">
+                            <div align="center" class="button_layout">
                                 <input type="button" value="Shot" 
                                     onclick="increment_stat('Shots');" 
                                     class="button">

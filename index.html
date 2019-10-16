@@ -4,10 +4,16 @@
         <meta name="author" content="Joseph Iosue">
         <title>Hockey Stats</title>
         <link rel="shortcut icon" href="images/favicon.ico">
+
+        <!-- Stylesheets -->
         <link type='text/css' rel='stylesheet' href='stylesheets/index.css' />
         <link rel="stylesheet" media="screen and (min-device-width: 800px)" href="stylesheets/desktop.css" />
         <link rel="stylesheet" media="screen and (max-device-width: 799px)" href="stylesheets/mobile.css" />
+
+        <!-- Scripts -->
+        <script src="javascript/cookies.js"></script>
         <script src="javascript/main.js"></script>
+
         <!--Materialize-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
@@ -136,8 +142,12 @@
                                 The compiled game stats will appear here as they are entered.
                             </p>
                             <br/>
+
                             <!-- Button to copy the output -->
                             <input type="button" value="Copy output" onclick="copy_output();" class="button">
+
+                            <!-- Button to reset cookies -->
+                            <input type="button" value="New game" onclick="refresh();" class="button">
                         </div>
                     </div>
                 </div>
@@ -168,6 +178,7 @@
                             <li class="white-text">`b` is a blocked shot</li>
                             <li class="white-text">`o` is an off-target shot</li>
                             <li class="white-text">`h` is a hit</li>
+                            <li class="white-text">`r` is reload and new game</li>
                         </table>
                     </p>
                 </div>

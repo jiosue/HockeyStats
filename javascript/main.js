@@ -1,6 +1,7 @@
 // GLOBAL VARIABLES
 
-var NOTES = ""
+var d = new Date();
+var NOTES = "Game started on " + d.toString() + "<br/>";
 const STATS_ORDER = [
 	'TOI', 'Shifts', 'TOI/shift',
 	'Faceoff Wins', 'Faceoff Losses',
@@ -40,13 +41,13 @@ function update_output() {
 	var toi = STATS["TOI"]; var toi_shift = STATS["TOI/shift"];
 	STATS["TOI"] = pretty_time(toi); STATS["TOI/shift"] = pretty_time(toi_shift);
 
-	// Create output strings.
-	var output = "";
+	// Create output strings
+	var output = ""; set_cookie("NOTES", NOTES, 10);
 	for (var i = 0; i < STATS_LENGTH; i++) {
 		var stat = STATS_ORDER[i];
 		output += stat + ": " + STATS[stat].toString() + "<br/>";
 	}
-	output += "<br/>Notes:<br/>" + NOTES;
+	output += "<br/>" + NOTES;
 
 	// Reset TOI and TOI/shift to seconds.
 	STATS["TOI"] = toi; STATS["TOI/shift"] = toi_shift;
@@ -54,7 +55,19 @@ function update_output() {
 	// Put output on the screen.
 	document.getElementById("output").innerHTML = output;
 
+	// update cookies
+	update_cookies();
+
 	return output;
+}
+
+
+function update_cookies() {
+	for (var i = 0; i < STATS_LENGTH; i++) {
+		var stat = STATS_ORDER[i];
+		set_cookie(stat, STATS[stat].toString(), 10);
+	}
+	set_cookie("NOTES", NOTES, 10);
 }
 
 
@@ -142,6 +155,18 @@ function copy_output() {
 }
 
 
+function refresh() {
+	/* Clear cookies and reload. */
+
+	set_cookie("NOTES", "", 1);
+	for (var i = 0; i < STATS_LENGTH; i++) {
+		var stat = STATS_ORDER[i];
+		set_cookie("stat", 0, 1);
+	}
+	location.reload();
+}
+
+
 // Key bindings
 
 document.onkeydown = function (e) {
@@ -180,5 +205,19 @@ document.onkeydown = function (e) {
 			increment_stat('Off-target Shots'); break;
 		case 72 : // Hit, h
 			increment_stat('Hits'); break;
+		case 82 : // reset cookies, r
+			refresh();
 	}
 }
+
+window.onload = function() {
+	// load variables from cookies
+	for (var i = 0; i < STATS_LENGTH; i++) {
+		var stat = STATS_ORDER[i]; var value = get_cookie(stat);
+		if (value !== "") {STATS[stat] = parseInt(value);}
+	}
+	var value = get_cookie("NOTES");
+	if (value !== "") {NOTES = value;}
+	
+	update_output();
+};

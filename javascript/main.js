@@ -190,7 +190,7 @@ document.onkeydown = function (e) {
 		case 76 : // Faceoff loss, l
 			if (!on_ice) {start_shift(); increment_stat('Faceoff Losses');} break;
 		case 71 : // Goal, g
-			increment_stat('Goals'); increment_stat('Plus'); stop_shift(); break;
+			increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); stop_shift(); break;
 		case 65 : // Assist, a
 			increment_stat('Assists'); increment_stat('Plus'); stop_shift(); break;
 		case 39 : // Plus, <right>
@@ -206,7 +206,7 @@ document.onkeydown = function (e) {
 		case 72 : // Hit, h
 			increment_stat('Hits'); break;
 		case 82 : // reset cookies, r
-			refresh();
+			refresh(); break;
 	}
 }
 

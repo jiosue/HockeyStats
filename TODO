@@ -1,0 +1,3 @@
+- PowerPlay Goals, Assists shouldn't increment +/-
+- Shift should only pause after Goal, Assist, Plus, Minus, because a player doesn't necessarily have to get off of the ice. (Unless it says otherwise here https://sports.stackexchange.com/questions/24198/which-of-these-situations-is-a-new-shift)
+- Be able to decrement stats

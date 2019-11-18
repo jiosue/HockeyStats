@@ -74,16 +74,16 @@
                             <!-- Points -->
                             <div align="center" class="button_layout">
                                 <input type="button" value="Goal" 
-                                    onclick="increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); if (on_ice) {pause_resume();}" 
+                                    onclick="increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); if (on_ice && !paused) {pause_resume();}" 
                                     class="button">
                                 <input type="button" value="Assist" 
-                                    onclick="increment_stat('Assists'); increment_stat('Plus'); if (on_ice) {pause_resume();}" 
+                                    onclick="increment_stat('Assists'); increment_stat('Plus'); if (on_ice && !paused) {pause_resume();}" 
                                     class="button">
                                 <input type="button" value="Plus" 
-                                    onclick="increment_stat('Plus'); if (on_ice) {pause_resume();}" 
+                                    onclick="increment_stat('Plus'); if (on_ice && !paused) {pause_resume();}" 
                                     class="button">
                                 <input type="button" value="Minus" 
-                                    onclick="increment_stat('Minus'); if (on_ice) {pause_resume();}" 
+                                    onclick="increment_stat('Minus'); if (on_ice && !paused) {pause_resume();}" 
                                     class="button">
                             </div>
 

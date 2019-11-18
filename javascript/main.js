@@ -186,17 +186,18 @@ document.onkeydown = function (e) {
 		case 80 : // Pause/resume, p
 			pause_resume(); break;
 		case 87 : // Faceoff win, w
-			if (!on_ice) {start_shift(); increment_stat('Faceoff Wins');} break;
+			if (!on_ice) {start_shift(); increment_stat('Faceoff Wins');} else if (paused) {pause_resume(); increment_stat('Faceoff Wins');}
 		case 76 : // Faceoff loss, l
 			if (!on_ice) {start_shift(); increment_stat('Faceoff Losses');} break;
+			if (!on_ice) {start_shift(); increment_stat('Faceoff Losses');} else if (paused) {pause_resume(); increment_stat('Faceoff Losses');}
 		case 71 : // Goal, g
-			increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); stop_shift(); break;
+			increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); pause_resume(); break;
 		case 65 : // Assist, a
-			increment_stat('Assists'); increment_stat('Plus'); stop_shift(); break;
+			increment_stat('Assists'); increment_stat('Plus'); pause_resume(); break;
 		case 39 : // Plus, <right>
-			increment_stat('Plus'); stop_shift(); break;
+			increment_stat('Plus'); pause_resume(); break;
 		case 37 : // Minus, <left>
-			increment_stat('Minus'); stop_shift(); break;
+			increment_stat('Minus'); pause_resume(); break;
 		case 88 : // Shot, x
 			increment_stat('Shots'); break;
 		case 66 : // Blocked shot, b

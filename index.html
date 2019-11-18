@@ -64,26 +64,26 @@
                                     onclick="pause_resume();"
                                     class="button">
                                 <input type="button" value="Faceoff Win" 
-                                    onclick="if (!on_ice) {start_shift(); increment_stat('Faceoff Wins');}"
+                                    onclick="if (!on_ice) {start_shift(); increment_stat('Faceoff Wins');} else if (paused) {pause_resume(); increment_stat('Faceoff Wins');}"
                                     class="button">
                                 <input type="button" value="Faceoff Loss" 
-                                    onclick="if (!on_ice) {start_shift(); increment_stat('Faceoff Losses');}"
+                                    onclick="if (!on_ice) {start_shift(); increment_stat('Faceoff Losses');} else if (paused) {pause_resume(); increment_stat('Faceoff Losses');}"
                                     class="button">
                             </div>
 
                             <!-- Points -->
                             <div align="center" class="button_layout">
                                 <input type="button" value="Goal" 
-                                    onclick="increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); stop_shift();" 
+                                    onclick="increment_stat('Goals'); increment_stat('Shots'); increment_stat('Plus'); pause_resume();" 
                                     class="button">
                                 <input type="button" value="Assist" 
-                                    onclick="increment_stat('Assists'); increment_stat('Plus'); stop_shift();" 
+                                    onclick="increment_stat('Assists'); increment_stat('Plus'); pause_resume();" 
                                     class="button">
                                 <input type="button" value="Plus" 
-                                    onclick="increment_stat('Plus'); stop_shift();" 
+                                    onclick="increment_stat('Plus'); pause_resume();" 
                                     class="button">
                                 <input type="button" value="Minus" 
-                                    onclick="increment_stat('Minus'); stop_shift();" 
+                                    onclick="increment_stat('Minus'); pause_resume();" 
                                     class="button">
                             </div>
 

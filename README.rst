@@ -1,1 +1,1 @@
-Hockey stats web app v0.1.0.
+Hockey stats web app v0.1.1.

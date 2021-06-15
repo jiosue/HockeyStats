@@ -1,0 +1,3 @@
+- I don't remember why `stop_shift` has an optional argument `do_when_paused`. It seems that everytime it is called, `do_when_paused` is set to true. Check again, and then get rid of it.
+- PowerPlay Goals, Assists shouldn't increment +/-
+- Be able to decrement stats
